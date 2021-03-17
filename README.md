@@ -1,3 +1,2 @@
 # ikt213
-kapcsolat próba
-githubon irtam hozzé
+kapcsolat próba githubon irtam hozzá
