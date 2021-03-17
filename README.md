@@ -1,2 +1,2 @@
 # ikt213
-kapcsolat proba
+kapcsolat próba
