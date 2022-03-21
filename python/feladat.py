@@ -1,0 +1,23 @@
+from tkinter import *
+foablak=Tk()
+icon = PhotoImage(file='kép.png')
+foablak.iconphoto(True, icon)
+szoveg1=Label(foablak, text="Első mező", pady=15)
+szoveg1.grid(row = 0, column=0,)
+mezo1=Entry(foablak)
+mezo1.grid(row =0,column=1,)
+szoveg2=Label(foablak, text="Második",pady=15)
+szoveg2.grid(row = 1, column=0,)
+mezo2=Entry(foablak)
+mezo2.grid(row =1,column=1)
+szoveg3=Label(foablak, text="Harmadik", pady=15)
+szoveg3.grid(row = 2, column=0,)
+mezo3=Entry(foablak)
+mezo3.grid(row =2,column=1,)
+can1 = Canvas(foablak, bg = 'white' ,width = 160, height=160)
+kep = PhotoImage(file='feladathozkep.png',)
+item = can1.create_image(100, 100, image = kep,)
+can1.grid(rowspan = 3, columnspan = 1, column=3, row=0, padx = 15)
+
+
+foablak.mainloop()
