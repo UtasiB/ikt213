@@ -45,13 +45,6 @@ def szamit():
             szamolas = c/V
             mezo6.delete(0, END)
             mezo6.insert(0, str(cucc2)+' %')
-    elif a == str and b == str and c == str:
-        mezo4.delete(0, END)
-        mezo5.delete(0, END)
-        mezo6.delete(0, END)
-        mezo4.insert(0, 'Vicces tanár úr!')
-    else:
-        pass
 foablak.title('Boros hordó')
 szoveg1=Label(foablak, text='Sugár (cm):')
 szoveg1.grid(row=0,column=0)
