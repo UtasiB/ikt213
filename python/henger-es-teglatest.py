@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+import math
 def nevjegy():
     abl2 = Toplevel(foablak)
     uz2 = Message(abl2, text= 'Készítette: Utasi Balázs\nBácsborsód\n2006.03.24', width=300)
@@ -111,6 +112,88 @@ def terfogat():
     gomb = Button(abl3, text='Kilép', command= abl3.destroy)
     gomb.grid(row=4,column=3, sticky = W)
     abl3.mainloop()
+def felszinH():
+    def szamit():
+        uresmezonezo = mezo1.get()
+        if len(uresmezonezo) == 0:
+            messagebox.showerror('Error','A mező üres!')
+        else:
+            pass
+        uresmezonezo = int(uresmezonezo)    
+        uresmezonezo = mezo2.get()
+        if len(uresmezonezo) == 0:
+            messagebox.showerror('Error','A mező üres!')
+        else:
+            pass
+        sugar = eval(mezo1.get())
+        magassag = eval(mezo2.get())
+        if sugar>0 and magassag>0: 
+            felszin = 2*(sugar*sugar)*math.pi+2*sugar*math.pi*magassag
+            mezo4.delete(0, END)
+            mezo4.insert(0,str(felszin))
+        else:
+            messagebox.showerror('Error','Nem lehet nulla és negatív sem!')
+    abl4 = Toplevel(foablak)
+    abl4.title('A henger felszíne')
+    abl4.minsize(width= 300,height=100)
+    szoveg1 = Label(abl4, text ='Sugár:')
+    szoveg2 = Label(abl4, text ='Magasság:')
+    szoveg4 = Label(abl4, text='Számítás',)
+    gomb1 = Button(abl4, text='Számitás', command= szamit)
+    mezo1 = Entry(abl4)
+    mezo2 = Entry(abl4)
+    mezo4 = Entry(abl4)
+    szoveg1.grid(row = 1)
+    szoveg2.grid(row = 2)
+    szoveg4.grid(row = 5)
+    gomb1.grid(row=4,column=2, sticky = W)
+    mezo1.grid(row=1,column=2, sticky = W)
+    mezo2.grid(row=2,column=2, sticky = W)
+    mezo4.grid(row=5,column=2, sticky = W)
+    gomb = Button(abl4, text='Kilép', command= abl4.destroy)
+    gomb.grid(row=4,column=3, sticky = W)
+    abl4.mainloop()
+def terfogatH():
+    def szamit():
+        uresmezonezo = mezo1.get()
+        if len(uresmezonezo) == 0:
+            messagebox.showerror('Error','A mező üres')
+        else:
+            pass
+        uresmezonezo = int(uresmezonezo)    
+        uresmezonezo = mezo2.get()
+        if len(uresmezonezo) == 0:
+            messagebox.showerror('Error','A mező üres')
+        else:
+            pass
+        sugar = eval(mezo1.get())
+        magassag = eval(mezo2.get())
+        if sugar>0 and magassag>0: 
+            terfogat=sugar**2* magassag * math.pi
+            mezo4.delete(0, END)
+            mezo4.insert(0,str(terfogat))
+        else:
+            messagebox.showerror('Error','Nem lehet nulla') 
+    abl4 = Toplevel(foablak)
+    abl4.title('A henger térfogata ')
+    abl4.minsize(width= 300,height=100)
+    szoveg1 = Label(abl4, text ='Sugár:')
+    szoveg2 = Label(abl4, text ='Magasság:')
+    szoveg4 = Label(abl4, text='Számítás',)
+    gomb1 = Button(abl4, text='Számitás', command= szamit)
+    mezo1 = Entry(abl4)
+    mezo2 = Entry(abl4)
+    mezo4 = Entry(abl4)
+    szoveg1.grid(row = 1)
+    szoveg2.grid(row = 2)
+    szoveg4.grid(row = 5)
+    gomb1.grid(row=4,column=2, sticky = W)
+    mezo1.grid(row=1,column=2, sticky = W)
+    mezo2.grid(row=2,column=2, sticky = W)
+    mezo4.grid(row=5,column=2, sticky = W)
+    gomb = Button(abl4, text='Kilép', command= abl4.destroy)
+    gomb.grid(row=4,column=3, sticky = W)
+    abl4.mainloop()
 foablak = Tk()
 foablak.title('A téglatest adatai')
 foablak.minsize(width=300, height= 100)
@@ -128,4 +211,10 @@ teglatest = Menu(menu2)
 teglatest.add_command(label='Felszín', command= felszin, underline= 0)
 teglatest.add_command(label='Térfogat', command= terfogat, underline= 0)
 menu2.config(menu = teglatest)
+menu3 = Menubutton(menusor, text='Henger' , underline = 0)
+menu3.pack(side = LEFT)
+henger = Menu(menu3)
+henger.add_command(label='Felszín', command= felszinH, underline= 0)
+henger.add_command(label='Térfogat', command= terfogatH, underline= 0)
+menu3.config(menu = henger)
 foablak.mainloop()
